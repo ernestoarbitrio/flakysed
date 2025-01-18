@@ -43,7 +43,6 @@ mod tests {
         assert!(output.contains("server/tests/something/thing1"));
         assert!(output.contains("lib/tests/something/thing1"));
 
-        // Clean up temporary files
         cleanup_temp_file(input_path);
         cleanup_temp_file(output_path);
     }
@@ -65,7 +64,6 @@ mod tests {
         let output: String = read_temp_file(output_path).unwrap();
         assert!(output.is_empty());
 
-        // Clean up temporary files
         cleanup_temp_file(input_path);
         cleanup_temp_file(output_path);
     }
