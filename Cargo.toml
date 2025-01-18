@@ -2,7 +2,7 @@
 name = "flakysed"
 version = "0.1.0"
 edition = "2021"
-authors = ["Ernesto <ernesto.arbitrio@gmail.com>"]
+authors = ["Ernesto Arbitrio <ernesto.arbitrio@gmail.com>"]
 readme = "README.md"
 description = """
 Clean CircleCI log files. Processes the input file to extract and clean log lines 
