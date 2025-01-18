@@ -18,11 +18,11 @@ struct Args {
     worker: String,
 }
 
-fn main() -> std::io::Result<()> {
+fn main() {
     let args = Args::parse();
 
     if let Err(e) = ProcessFile::run(&args.input_file, &args.output_file, &args.worker) {
-        eprintln!("Error: Failed to process file - {}", e);
+        eprintln!("Error: Failed to process file - {e}");
         std::process::exit(1);
     }
 
@@ -30,5 +30,4 @@ fn main() -> std::io::Result<()> {
         "File processed successfully. Output saved to '{}'.",
         args.output_file
     );
-    Ok(())
 }
