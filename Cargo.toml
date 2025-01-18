@@ -1,0 +1,19 @@
+[package]
+name = "flakysed"
+version = "0.1.0"
+edition = "2021"
+authors = ["Ernesto <ernesto.arbitrio@gmail.com>"]
+readme = "README.md"
+description = """
+Clean CircleCI log files. Processes the input file to extract and clean log lines 
+related to a specific worker, stopping at the first failure if present, and writes
+the normalized output to the specified file.
+"""
+
+[lints.clippy]
+pedantic = "warn"
+
+[dependencies]
+regex = "1.9"
+fancy-regex = "0.14.0"
+clap = { version = "4.5.26", features = ["derive"] }
