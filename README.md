@@ -35,26 +35,46 @@ flakysed --input <input_file> --output <output_file> --worker <worker_name>
 
 ### Example
 
-To process a log file:
+To process a txt file that contains a complete report of a failing `pytest` pipeline with a complete traceback like:
+
+```
+[gw0] [36m [ 98%]  [0m [32mPASSED [0m lib/tests/unit/test_a.py::TestA::test_a
+[gw7] [36m [ 98%]  [0m [32mPASSED [0m lib/tests/unit/test_b.py::TestA::test_b
+[gw1] [36m [ 98%]  [0m [32mPASSED [0m lib/tests/unit/test_c.py::TestA::test_c
+[gw7] [36m [ 98%]  [0m [32mPASSED [0m lib/tests/unit/test_d.py::TestA::test_d
+[gw7] [36m [ 98%]  [0m [32mPASSED [0m lib/tests/unit/test_d.py::TestA::test_d1
+[gw7] [36m [ 98%]  [0m [32mFAILED [0m lib/tests/unit/test_d.py::TestA::test_d2
+
+=================================== FAILURES ===================================
+[31m [1m______________________ test_d2 _______________________ [0m
+[gw3] linux -- Python 3.11.11 /home/app/venv/bin/python
+...
+lib/src/cr/lib/importer/a.py                                                          362     44  87.85%   12-15, 46, 52, 55, 58, 
+lib/src/cr/lib/importer/p.py                                                          155     69  55.48%   60-62, 66-67, 78-81, 
+lib/src/cr/lib/importer/s.py                                                          74       1  98.65%   112
+```
+
+and after this command
 
 ```bash
-process_file --input circleci.log --output cleaned_logs.txt --worker gw7
+process_file --input tests_failure.txt --output tests_faliure_cleaned.txt --worker gw7
+```
+
+the cleaned files will contains:
+
+```
+lib/tests/unit/test_b.py::TestA::test_b
+lib/tests/unit/test_d.py::TestA::test_d
+lib/tests/unit/test_d.py::TestA::test_d1
+lib/tests/unit/test_d.py::TestA::test_d2
 ```
 
 This command will:
 
-1. Read `circleci.log`.
+1. Read `tests_failure.txt`.
 2. Filter logs related to worker `gw7`.
 3. Stop processing at the first test failure (if present).
-4. Write the cleaned and normalized logs to `cleaned_logs.txt`.
-
-### Testing
-
-To run tests (if implemented):
-
-```bash
-cargo test
-```
+4. Write the cleaned and normalized logs to `tests_faliure_cleaned.txt`.
 
 ## License
 
