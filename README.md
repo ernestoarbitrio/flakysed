@@ -17,20 +17,7 @@ This tool processes CircleCI log files, extracting and cleaning log lines associ
 
 ## Installation
 
-1. Clone the repository:
-
-   ```bash
-   git clone <repository-url>
-   cd <repository-directory>
-   ```
-
-2. Build the tool:
-
-   ```bash
-   cargo build --release
-   ```
-
-3. The compiled binary will be available in the `target/release` directory.
+`cargo install flakysed`
 
 ## Usage
 
